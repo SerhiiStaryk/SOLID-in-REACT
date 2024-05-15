@@ -1,11 +1,22 @@
-import VideoPreview from './components/VideoPreview';
+import StreamDescription from './components/StreamDescription';
+import getVideoPreview from './components/getVideoPreview';
+import useStreamDetails from './hooks/useStreamDetails';
+import useVideoDetails from './hooks/useVideoDetails';
+
+
+const VideoPreview = getVideoPreview(useVideoDetails);
+const StreamPreview = getVideoPreview(useStreamDetails);
+
 
 function App() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <VideoPreview videoId={'testVideo'} />
+      <VideoPreview videoId='testVideo' />
       <br />
-      <VideoPreview videoId={'testStream'} />
+      <StreamPreview
+        DescriptionComponent={StreamDescription}
+        videoId='testStream'
+      />
     </div>
   );
 }

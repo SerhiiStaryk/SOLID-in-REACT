@@ -1,10 +1,8 @@
-import useVideoDetails from '../hooks/useVideoDetails';
 import { VideoDetails } from './VideoDetails';
 
-export type VideoPreviewProps = {
+export type VideoPreviewProps<T extends VideoDetails> = {
   videoId: string;
-  videoDetailsGetter?: typeof useVideoDetails;
-  ImagePreviewComponent?: React.FunctionComponent<{ videoDetails: VideoDetails }>;
-  DescriptionComponent?: React.FunctionComponent<{ videoDetails: VideoDetails }>;
-  LoaderComponent?: React.FunctionComponent<{}>
+  ImagePreviewComponent?: React.FunctionComponent<{ videoDetails: T }>;
+  DescriptionComponent?: React.FunctionComponent<{ videoDetails: T }>;
+  LoaderComponent?: React.FunctionComponent<{}>;
 };
