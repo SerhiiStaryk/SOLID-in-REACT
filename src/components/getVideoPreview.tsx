@@ -9,18 +9,16 @@ const getVideoPreview =
   <T extends VideoDetails>(videoDetailsGetter: (videoId: string) => T | undefined) =>
   ({
     videoId,
-    ImagePreviewComponent = VideoPreviewImage,
-    DescriptionComponent = VideoDescription,
+    renderImagePreview = video => <VideoPreviewImage {...video} />,
+    renderDescription = video => <VideoDescription {...video} />,
     LoaderComponent = Loader,
   }: VideoPreviewProps<T>) => {
     const videoDetails = videoDetailsGetter(videoId);
 
     return videoDetails ? (
       <div style={{ display: 'flex' }}>
-        <ImagePreviewComponent videoDetails={videoDetails} />
-        <div style={{ paddingLeft: '10px' }}>
-          <DescriptionComponent videoDetails={videoDetails} />
-        </div>
+        {renderImagePreview(videoDetails)}
+        <div style={{ paddingLeft: '10px' }}>{renderDescription(videoDetails)}</div>
       </div>
     ) : (
       <LoaderComponent />

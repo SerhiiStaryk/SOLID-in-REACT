@@ -1,10 +1,12 @@
 import { VideoDetails } from '../types/VideoDetails';
 
-const VideoDescription = ({ videoDetails }: { videoDetails: VideoDetails }) => {
+export type VideoDescriptionProps = Pick<VideoDetails, 'author' | 'title'>;
+
+const VideoDescription = ({ author, title }: VideoDescriptionProps) => {
   return (
     <>
-      <div style={{ fontWeight: 'bold' }}>{videoDetails.title}</div>
-      <div style={{ color: '#808080' }}>{videoDetails.author}</div>
+      <div style={{ fontWeight: 'bold' }}>{title}</div>
+      <div style={{ color: '#808080' }}>{author}</div>
     </>
   );
 };

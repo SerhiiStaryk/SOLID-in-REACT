@@ -3,10 +3,8 @@ import getVideoPreview from './components/getVideoPreview';
 import useStreamDetails from './hooks/useStreamDetails';
 import useVideoDetails from './hooks/useVideoDetails';
 
-
 const VideoPreview = getVideoPreview(useVideoDetails);
 const StreamPreview = getVideoPreview(useStreamDetails);
-
 
 function App() {
   return (
@@ -14,7 +12,7 @@ function App() {
       <VideoPreview videoId='testVideo' />
       <br />
       <StreamPreview
-        DescriptionComponent={StreamDescription}
+        renderDescription={video => <StreamDescription {...video}/>}
         videoId='testStream'
       />
     </div>
